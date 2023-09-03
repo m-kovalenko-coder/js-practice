@@ -18,14 +18,10 @@ const personalMovieDB = {
 };
 
 let detectPersonalLevel = () => {
-    if (personalMovieDB.count < 10)
-        console.log("Watched a few films")
-    else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30)
-        console.log("You are a classic spectator")
-    else if (personalMovieDB.count >= 30)
-        console.log("You are a movie buff!")
-    else
-        console.log("There was an error!")
+    (personalMovieDB.count < 10) ? console.log("Watched a few films")
+    : (personalMovieDB.count >= 10 && personalMovieDB.count < 30) ? console.log("You are a classic spectator")
+    : (personalMovieDB.count >= 30) ? console.log("You are a movie buff!")
+    : console.log("There was an error!");
 }
 detectPersonalLevel();
 
@@ -38,7 +34,7 @@ let rememberMyFilms = () => {
 
         (lastWatchedFilm != null && giveRating != null && lastWatchedFilm != '' && giveRating != '' && lastWatchedFilm.length <= 50 && !isNaN(giveRating) && giveRating <= 10) 
         ? (personalMovieDB.movies[lastWatchedFilm] = giveRating, console.log('Done!')) 
-        : (i--, console.log('Error!'))
+        : (i--, console.log('Error!'));
 
         // OLD CONDITION
         // if (lastWatchedFilm != null && giveRating != null && lastWatchedFilm != '' && giveRating != '' && lastWatchedFilm.length <= 50) {
@@ -101,3 +97,21 @@ showMyDB(personalMovieDB.private);
 //     }
 // }
 // showMyDB();
+
+ 
+
+console.log(Object.keys(options).length);
+
+let counter = 0;
+for (let key in options) {
+    counter++;
+    if (typeof(options[key]) === 'object') {
+        for (let i in options[key]) {
+            console.log(`В объекте ${key} свойство ${i} имеет значение ${options[key][i]}`);
+        } 
+    } else {
+        console.log(`Свойство ${key} имеет значение ${options[key]}`);
+    }
+}
+
+console.log(`Свойств в объекте options = ${counter}`);
